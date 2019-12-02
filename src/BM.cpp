@@ -68,6 +68,8 @@ struct BM : Module {
 
 		if (prevres - res > 0)
 			phase = 0.f;
+			phase1 = 0.f;
+			phase2=0.f;
 
 		if (phase >= 1)
 			phase -= 1.f;
