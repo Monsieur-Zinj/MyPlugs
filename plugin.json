@@ -1,0 +1,33 @@
+{
+  "slug": "MyPlugin",
+  "name": "Test",
+  "version": "1.1.6",
+  "license": "Propiriaty",
+  "brand": "test",
+  "author": "Moi",
+  "authorEmail": "",
+  "authorUrl": "",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "Mymodule",
+      "name": "Mymodule",
+      "description": "test",
+      "tags": [
+        "test"
+      ]
+    },
+    {
+      "slug": "BM",
+      "name": "BM",
+      "description": "Beat Machine",
+      "tags": [
+        "Beat Machine"
+      ]
+    }
+  ]
+}
