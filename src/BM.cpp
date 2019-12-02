@@ -37,9 +37,9 @@ struct BM : Module {
 		configParam(D_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(D2_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(D1_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(F2_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(F_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(F1_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(F2_PARAM, -4.f, 9.f, 0.f, "","",2,1);
+		configParam(F_PARAM, -4.f, 9.f, 0.f, "","",2,1);
+		configParam(F1_PARAM, -4.f, 9.f, 0.f, "","",2,1);
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -66,10 +66,12 @@ struct BM : Module {
 		phase1 += f1 * args.sampleTime;
 		phase2 += f2 * args.sampleTime;
 
-		if (prevres - res > 0)
+		if (prevres - res < 0){
 			phase = 0.f;
 			phase1 = 0.f;
-			phase2=0.f;
+			phase2 = 0.f;
+		}
+		prevres=res;
 
 		if (phase >= 1)
 			phase -= 1.f;
