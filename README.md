@@ -1,3 +1,3 @@
 # MyPlugs
 
-Des plugins de l'Olymplique Lyonnais.
+Des plugins de l'Olympique Lyonnais.
