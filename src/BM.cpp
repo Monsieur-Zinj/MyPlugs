@@ -2,9 +2,11 @@
 
 
 struct BM : Module {
+	
 	float phase1=0.f;
 	float phase2=0.f;
 	float phase=0.f;
+
 	enum ParamIds {
 		D_PARAM,
 		D2_PARAM,
@@ -16,6 +18,8 @@ struct BM : Module {
 	};
 	enum InputIds {
 		CLOCK_INPUT,
+		RESET_INPUT,
+		CLOCK2_INPUT,
 		NUM_INPUTS
 	};
 	enum OutputIds {
@@ -33,9 +37,9 @@ struct BM : Module {
 		configParam(D_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(D2_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(D1_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(F2_PARAM, -4.f, 9.f, 0.f, "","",2,1);
-		configParam(F_PARAM, -4.f, 9.f, 0.f, "","",2,1);
-		configParam(F1_PARAM, -4.f, 9.f, 0.f, "","",2,1);
+		configParam(F2_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(F_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(F1_PARAM, 0.f, 1.f, 0.f, "");
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -46,6 +50,9 @@ struct BM : Module {
 		float d1 = params[D1_PARAM].getValue();
 		float d2 = params[D2_PARAM].getValue();
 		float trig = inputs[CLOCK_INPUT].getVoltage();
+		float trig2 = inputs[CLOCK2_INPUT].getVoltage();
+		float res = inputs[RESET_INPUT].getVoltage();
+		float prevres = 0.f;
 		//float out=0.f;
 		//float out1=0.f;
 		//float out2=0.f;
@@ -58,6 +65,9 @@ struct BM : Module {
 		phase += f * args.sampleTime;
 		phase1 += f1 * args.sampleTime;
 		phase2 += f2 * args.sampleTime;
+
+		if (prevres - res > 0)
+			phase = 0.f;
 
 		if (phase >= 1)
 			phase -= 1.f;
@@ -81,10 +91,9 @@ struct BM : Module {
 		
 
 		outputs[OUT1_OUTPUT].setVoltage(10.f * simd::ifelse((lfo1==1.f) && (trig>0.f) && (lfo==1.f), 1.f, 0.f));
-		outputs[OUT2_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==1.f) && (trig>0.f) && (lfo==0.f), 1.f, 0.f));
+		outputs[OUT2_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==1.f) && (trig2>0.f) && (lfo==0.f), 1.f, 0.f));
+	
 	}
-
-		
 };
 
 
@@ -105,7 +114,9 @@ struct BMWidget : ModuleWidget {
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(36.616, 47.785)), module, BM::F_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(10.424, 48.319)), module, BM::F1_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(9.755, 85.336)), module, BM::CLOCK_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(9.755, 73.309)), module, BM::CLOCK_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(31.538, 84.401)), module, BM::RESET_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(9.889, 92.953)), module, BM::CLOCK2_INPUT));
 
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(37.15, 112.731)), module, BM::OUT_OUTPUT));
 		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(9.354, 112.998)), module, BM::OUT1_OUTPUT));
