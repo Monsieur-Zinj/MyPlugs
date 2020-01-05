@@ -11,3 +11,5 @@ extern Plugin* pluginInstance;
 // extern Model* modelMyModule;
 extern Model* modelMymodule;
 extern Model* modelBM;
+extern Model* modelCMul;
+

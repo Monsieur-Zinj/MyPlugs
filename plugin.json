@@ -28,6 +28,14 @@
       "tags": [
         "Beat Machine"
       ]
+    },
+    {
+      "slug": "CMul",
+      "name": "CMul",
+      "description": "Clock Multiple",
+      "tags": [
+        "clock"
+      ]
     }
   ]
 }

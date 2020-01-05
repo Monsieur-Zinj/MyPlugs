@@ -8,6 +8,8 @@ void init(Plugin* p) {
 	pluginInstance = p;
 	p->addModel(modelMymodule);
 	p->addModel(modelBM);
+	p->addModel(modelCMul);
+
 
 	// Add modules here
 	// p->addModel(modelMyModule);
