@@ -96,7 +96,10 @@ struct BM : Module {
 
 		outputs[OUT1_OUTPUT].setVoltage(10.f * simd::ifelse((lfo1==1.f) && (trig>0.f) && (lfo==1.f), 1.f, 0.f));
 		outputs[OUT2_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==1.f) && (trig2>0.f) && (lfo==0.f), 1.f, 0.f));
+
+        outputs[OUT_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==0.f) && (lfo2==0.f), 1.f, 0.f));
 	
+        
 	}
 };
 
