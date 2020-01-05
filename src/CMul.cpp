@@ -1,6 +1,6 @@
 #include "plugin.hpp"
 
-
+   
 struct CMul : Module {
 	enum ParamIds {
 		MUL1_PARAM,
@@ -23,13 +23,52 @@ struct CMul : Module {
 		NUM_LIGHTS
 	};
 
+    int i1=0;
+    int i2=0;
+    int j1=0;
+    int j2=0;   
+    int time1=0;
+    int time2=0;
+
+
 	CMul() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MUL1_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(MUL2_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(MUL1_PARAM, 0.f, 1.f, 1.f, "");
+		configParam(MUL2_PARAM, 0.f, 1.f, 1.f, "");
 	}
 
 	void process(const ProcessArgs& args) override {
+        int mul1 = std::floor(params[MUL1_PARAM].getValue());
+		int mul2 = std::floor(params[MUL2_PARAM].getValue());
+		float in1 = params[IN1_INPUT].getValue();
+		float in2 = params[IN2_INPUT].getValue();
+        float lastin1=0;
+        float lastin2=0;
+
+
+        if (lastin1>in1) {
+            time1=i1;
+            i1=0;
+        }
+
+        if (lastin2>in2) {
+            time2=i2;
+            i2=0;
+        }
+
+
+
+        outputs[OUT1_OUTPUT].setVoltage(simd::ifelse(eucDiv(j1,(time1/mul1)) == 0, 10.f, 0.f));
+
+        outputs[OUT2_OUTPUT].setVoltage(simd::ifelse(eucDiv(j2,(time2/mul2)) == 0, 10.f, 0.f));
+
+        lastin1=in1;
+        lastin2=in2;
+        i1=i1+1;
+        j1=j1+1;
+        i2=i2+1;
+        j2=i2+1;
+        
 	}
 };
 
