@@ -6,6 +6,7 @@ struct BM : Module {
 	float phase1=0.f;
 	float phase2=0.f;
 	float phase=0.f;
+    float prevres=0;
 
 	enum ParamIds {
 		D_PARAM,
@@ -34,12 +35,12 @@ struct BM : Module {
 
 	BM() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(D_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(D2_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(D1_PARAM, 0.f, 1.f, 0.f, "");
-		configParam(F2_PARAM, -4.f, 9.f, 0.f, "","",2,1);
-		configParam(F_PARAM, -4.f, 9.f, 0.f, "","",2,1);
-		configParam(F1_PARAM, -4.f, 9.f, 0.f, "","",2,1);
+		configParam(D_PARAM, -1.f, 1.f, 0.f, "");
+		configParam(D2_PARAM, -1.f, 1.f, 0.f, "");
+		configParam(D1_PARAM, -1.f, 1.f, 0.f, "");
+		configParam(F2_PARAM, -4.f, 4.f, 0.f, "","",2,1);
+		configParam(F_PARAM, -4.f, 4.f, 0.f, "","",2,1);
+		configParam(F1_PARAM, -4.f, 4.f, 0.f, "","",2,1);
 	}
 
 	void process(const ProcessArgs& args) override {
@@ -52,7 +53,6 @@ struct BM : Module {
 		float trig = inputs[CLOCK_INPUT].getVoltage();
 		float trig2 = inputs[CLOCK2_INPUT].getVoltage();
 		float res = inputs[RESET_INPUT].getVoltage();
-		float prevres = 0.f;
 		//float out=0.f;
 		//float out1=0.f;
 		//float out2=0.f;

@@ -25,49 +25,68 @@ struct CMul : Module {
 
     int i1=0;
     int i2=0;
-    int j1=0;
-    int j2=0;   
-    int time1=0;
-    int time2=0;
+    float j=0;
+    float j2=0;   
+    float time1=0;
+    float time2=0;
+    float lastin1=0;
+    float lastin2=0;
 
 
 	CMul() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MUL1_PARAM, 0.f, 1.f, 1.f, "");
-		configParam(MUL2_PARAM, 0.f, 1.f, 1.f, "");
+		configParam(MUL1_PARAM, 2.f, 10.f, 2.f, "");
+		configParam(MUL2_PARAM, 2.f, 10.f, 2.f, "");
 	}
 
-	void process(const ProcessArgs& args) override {
-        int mul1 = std::floor(params[MUL1_PARAM].getValue());
-		int mul2 = std::floor(params[MUL2_PARAM].getValue());
-		float in1 = params[IN1_INPUT].getValue();
-		float in2 = params[IN2_INPUT].getValue();
-        float lastin1=0;
-        float lastin2=0;
+	void process(const ProcessArgs& args) override { 
+        float cv1 = inputs[CV1_INPUT].getVoltage();
+        float cv2 = inputs[CV2_INPUT].getVoltage();
+        float mul1 = std::floor(params[MUL1_PARAM].getValue())+cv1;
+        float mul2 = std::floor(params[MUL2_PARAM].getValue())+cv2;
+   		float in1 = inputs[IN1_INPUT].getVoltage();
+		float in2 = inputs[IN2_INPUT].getVoltage();
+
+
 
 
         if (lastin1>in1) {
             time1=i1;
             i1=0;
+            j=0.f;
         }
 
         if (lastin2>in2) {
             time2=i2;
+            j2=0.f;
             i2=0;
         }
 
 
 
-        outputs[OUT1_OUTPUT].setVoltage(simd::ifelse(eucDiv(j1,(time1/mul1)) == 0, 10.f, 0.f));
 
-        outputs[OUT2_OUTPUT].setVoltage(simd::ifelse(eucDiv(j2,(time2/mul2)) == 0, 10.f, 0.f));
+        if (std::floor(time1/mul1)>0 && eucMod(j,std::floor(time1/mul1)) == 0) {
+            outputs[OUT1_OUTPUT].setVoltage(10.f);
+            j=0;
+        }
+        else {
+            outputs[OUT1_OUTPUT].setVoltage(0.f);
+        }
+
+        if (std::floor(time2/mul2)>0 && eucMod(j2,std::floor(time2/mul2)) == 0) {
+            outputs[OUT2_OUTPUT].setVoltage(10.f);
+            j2=0;
+        }
+        else {
+            outputs[OUT2_OUTPUT].setVoltage(0.f);
+        }
 
         lastin1=in1;
         lastin2=in2;
         i1=i1+1;
-        j1=j1+1;
+        j=j+1;
         i2=i2+1;
-        j2=i2+1;
+        j2=j2+1;
         
 	}
 };
