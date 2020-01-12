@@ -5,8 +5,8 @@ struct BM : Module {
 	
 	float phase1=0.f;
 	float phase2=0.f;
-	float phase=0.f;
-    float prevres=0;
+	float phase=0.5;
+    float prevres=0.f;
 
 	enum ParamIds {
 		D_PARAM,
@@ -35,18 +35,18 @@ struct BM : Module {
 
 	BM() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(D_PARAM, -1.f, 1.f, 0.f, "");
-		configParam(D2_PARAM, -1.f, 1.f, 0.f, "");
-		configParam(D1_PARAM, -1.f, 1.f, 0.f, "");
+		configParam(D_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(D2_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(D1_PARAM, 0.f, 1.f, 0.f, "");
 		configParam(F2_PARAM, -4.f, 4.f, 0.f, "","",2,1);
 		configParam(F_PARAM, -4.f, 4.f, 0.f, "","",2,1);
 		configParam(F1_PARAM, -4.f, 4.f, 0.f, "","",2,1);
 	}
 
 	void process(const ProcessArgs& args) override {
-		float f = params[F_PARAM].getValue();
-		float f1 = params[F1_PARAM].getValue();
-		float f2 = params[F2_PARAM].getValue();
+		float f = std::pow(2,params[F_PARAM].getValue());
+		float f1 = std::pow(2,params[F1_PARAM].getValue());
+		float f2 = std::pow(2,params[F2_PARAM].getValue());
 		float d = params[D_PARAM].getValue();
 		float d1 = params[D1_PARAM].getValue();
 		float d2 = params[D2_PARAM].getValue();
@@ -69,7 +69,7 @@ struct BM : Module {
 		if (prevres - res < 0){
 			phase = 0.f;
 			phase1 = 0.f;
-			phase2 = 0.f;
+			phase2 = 0.5;
 		}
 		prevres=res;
 
@@ -97,8 +97,8 @@ struct BM : Module {
 		outputs[OUT1_OUTPUT].setVoltage(10.f * simd::ifelse((lfo1==1.f) && (trig>0.f) && (lfo==1.f), 1.f, 0.f));
 		outputs[OUT2_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==1.f) && (trig2>0.f) && (lfo==0.f), 1.f, 0.f));
 
-        outputs[OUT_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==0.f) && (lfo2==0.f), 1.f, 0.f));
-	
+       // outputs[OUT_OUTPUT].setVoltage(10.f * simd::ifelse((lfo2==0.f) && (lfo2==0.f), 1.f, 0.f));
+	    outputs[OUT_OUTPUT].setVoltage(f2);
         
 	}
 };
