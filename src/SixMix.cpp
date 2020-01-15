@@ -22,13 +22,35 @@ struct SixMix : Module {
 	enum LightIds {
 		NUM_LIGHTS
 	};
+	float out = 0.f;
 
 	SixMix() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
-		configParam(MUL1_PARAM, 0.f, 1.f, 0.f, "");
+		configParam(MUL1_PARAM, 0.f, 6.f, 0.f, "");
 	}
 
 	void process(const ProcessArgs& args) override {
+		float mix=params[MUL1_PARAM].getValue();
+		float smix=eucMod(mix,1.f);
+		if ( 0<=mix && mix<1 ){
+			out=smix*inputs[IN2_INPUT].getVoltage()+(1-smix)*inputs[IN1_INPUT].getVoltage();
+		}
+		if ( 1<=mix && mix<2 ){
+			out=smix*inputs[IN3_INPUT].getVoltage()+(1-smix)*inputs[IN2_INPUT].getVoltage();
+		}
+		if ( 2<=mix && mix<3 ){
+			out=smix*inputs[IN4_INPUT].getVoltage()+(1-smix)*inputs[IN3_INPUT].getVoltage();
+		}
+		if ( 3<=mix && mix<4 ){
+			out=smix*inputs[IN5_INPUT].getVoltage()+(1-smix)*inputs[IN4_INPUT].getVoltage();
+		}
+		if ( 4<=mix && mix<5 ){
+			out=smix*inputs[IN6_INPUT].getVoltage()+(1-smix)*inputs[IN5_INPUT].getVoltage();
+		}
+		outputs[OUT_OUTPUT].setVoltage(out);
+
+			
+		
 	}
 };
 
