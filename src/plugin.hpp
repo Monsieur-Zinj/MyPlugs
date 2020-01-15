@@ -12,4 +12,6 @@ extern Plugin* pluginInstance;
 extern Model* modelMymodule;
 extern Model* modelBM;
 extern Model* modelCMul;
+extern Model* modelSixMix;
+
 

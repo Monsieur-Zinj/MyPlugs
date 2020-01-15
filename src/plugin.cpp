@@ -9,6 +9,8 @@ void init(Plugin* p) {
 	p->addModel(modelMymodule);
 	p->addModel(modelBM);
 	p->addModel(modelCMul);
+	p->addModel(modelSixMix);
+
 
 
 	// Add modules here

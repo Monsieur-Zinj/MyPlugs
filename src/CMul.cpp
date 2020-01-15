@@ -40,55 +40,55 @@ struct CMul : Module {
 	}
 
 	void process(const ProcessArgs& args) override { 
-        float cv1 = inputs[CV1_INPUT].getVoltage();
-        float cv2 = inputs[CV2_INPUT].getVoltage();
-        float mul1 = std::floor(params[MUL1_PARAM].getValue())+cv1;
-        float mul2 = std::floor(params[MUL2_PARAM].getValue())+cv2;
+        	float cv1 = inputs[CV1_INPUT].getVoltage();
+        	float cv2 = inputs[CV2_INPUT].getVoltage();
+        	float mul1 = std::floor(params[MUL1_PARAM].getValue())+cv1;
+        	float mul2 = std::floor(params[MUL2_PARAM].getValue())+cv2;
    		float in1 = inputs[IN1_INPUT].getVoltage();
 		float in2 = inputs[IN2_INPUT].getVoltage();
 
 
 
 
-        if (lastin1>in1) {
-            time1=i1;
-            i1=0;
-            j=0.f;
-        }
+		if (lastin1>in1) {
+		    time1=i1;
+		    i1=0;
+		    j=0.f;
+		}
 
-        if (lastin2>in2) {
-            time2=i2;
-            j2=0.f;
-            i2=0;
-        }
-
-
+		if (lastin2>in2) {
+		    time2=i2;
+		    j2=0.f;
+		    i2=0;
+		}
 
 
-        if (std::floor(time1/mul1)>0 && eucMod(j,std::floor(time1/mul1)) == 0) {
-            outputs[OUT1_OUTPUT].setVoltage(10.f);
-            j=0;
-        }
-        else {
-            outputs[OUT1_OUTPUT].setVoltage(0.f);
-        }
 
-        if (std::floor(time2/mul2)>0 && eucMod(j2,std::floor(time2/mul2)) == 0) {
-            outputs[OUT2_OUTPUT].setVoltage(10.f);
-            j2=0;
-        }
-        else {
-            outputs[OUT2_OUTPUT].setVoltage(0.f);
-        }
 
-        lastin1=in1;
-        lastin2=in2;
-        i1=i1+1;
-        j=j+1;
-        i2=i2+1;
-        j2=j2+1;
-        
-	}
+		if (std::floor(time1/mul1)>0 && eucMod(j,std::floor(time1/mul1)) == 0 && inputs[IN1_INPUT].isConnected()) {
+		    outputs[OUT1_OUTPUT].setVoltage(10.f);
+		    j=0;
+		}
+		else {
+		    outputs[OUT1_OUTPUT].setVoltage(0.f);
+		}
+
+		if (std::floor(time2/mul2)>0 && eucMod(j2,std::floor(time2/mul2)) == 0 && inputs[IN2_INPUT].isConnected()) {
+		    outputs[OUT2_OUTPUT].setVoltage(10.f);
+		    j2=0;
+		}
+		else {
+		    outputs[OUT2_OUTPUT].setVoltage(0.f);
+		}
+
+		lastin1=in1;
+		lastin2=in2;
+		i1=i1+1;
+		j=j+1;
+		i2=i2+1;
+		j2=j2+1;
+		
+		}
 };
 
 

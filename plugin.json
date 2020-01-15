@@ -36,6 +36,14 @@
       "tags": [
         "clock"
       ]
+    },
+    {
+      "slug": "SixMix",
+      "name": "SixMix",
+      "description": "mix progressively 6 inputs",
+      "tags": [
+        "mixer"
+      ]
     }
   ]
 }
