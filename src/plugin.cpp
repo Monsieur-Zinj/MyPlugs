@@ -10,6 +10,8 @@ void init(Plugin* p) {
 	p->addModel(modelBM);
 	p->addModel(modelCMul);
 	p->addModel(modelSixMix);
+	p->addModel(modelArp);
+
 
 
 
