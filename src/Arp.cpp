@@ -9,12 +9,13 @@ struct Arp : Module {
 		NUM_PARAMS
 	};
 	enum InputIds {
+		CL_INPUT,
 		PITCH_INPUT,
 		MOD_INPUT,
 		NUM_INPUTS
 	};
 	enum OutputIds {
-		SINE_OUTPUT,
+		OUT_OUTPUT,
 		NUM_OUTPUTS
 	};
 	enum LightIds {
@@ -47,10 +48,11 @@ struct ArpWidget : ModuleWidget {
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(15.875, 54.417)), module, Arp::P2_PARAM));
 		addParam(createParamCentered<RoundBlackKnob>(mm2px(Vec(15.875, 72.938)), module, Arp::P3_PARAM));
 
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(7.938, 17.375)), module, Arp::PITCH_INPUT));
-		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(22.301, 17.375)), module, Arp::MOD_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(15.118, 15.118)), module, Arp::CL_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(5.292, 17.375)), module, Arp::PITCH_INPUT));
+		addInput(createInputCentered<PJ301MPort>(mm2px(Vec(25.135, 17.375)), module, Arp::MOD_INPUT));
 
-		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 108.713)), module, Arp::SINE_OUTPUT));
+		addOutput(createOutputCentered<PJ301MPort>(mm2px(Vec(15.24, 108.713)), module, Arp::OUT_OUTPUT));
 	}
 };
 
