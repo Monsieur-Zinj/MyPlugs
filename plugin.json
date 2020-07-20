@@ -46,9 +46,50 @@
       ]
     },
     {
+      "slug": "VolDrumCont",
+      "name": "VolDrumCont",
+      "description": "Controling Volca Drum",
+      "tags": [
+        "Utility"
+      ]
+    },
+    {
+      "slug": "ArpSeq",
+      "name": "ArpSeq",
+      "description": "Arpeggiator sequencer",
+      "tags": [
+        "sequencer"
+      ]
+    },
+    {
       "slug": "Arp",
       "name": "Arp",
       "description": "arp",
+      "tags": [
+        "arp"
+      ]
+    },
+    {
+      "slug": "SelGate",
+      "name": "SelGate",
+      "description": "Gate selector",
+      "tags": [
+        "logic"
+      ]
+    },
+    {
+      "slug": "ClockDivCvRot",
+      "name": "ClockDivCvRot",
+      "description": "Clock div rotator with cv and other features",
+      "tags": [
+        "clock"
+      ]
+    },
+
+    {
+      "slug": "CovGate",
+      "name": "CovGate",
+      "description": "gate",
       "tags": [
         "arp"
       ]

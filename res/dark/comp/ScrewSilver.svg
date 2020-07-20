@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="15"
+   height="14.999"
+   viewBox="0 0 3.969 3.968"
+   version="1.1"
+   id="svg20"
+   sodipodi:docname="ScrewSilver.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata24">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     id="namedview22"
+     showgrid="false"
+     inkscape:zoom="46.231215"
+     inkscape:cx="3.4470045"
+     inkscape:cy="6.2317966"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg20"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <defs
+     id="defs8">
+    <linearGradient
+       id="a">
+      <stop
+         offset="0"
+         stop-color="#272727"
+         id="stop2"
+         style="stop-color:#3c3c3c;stop-opacity:1" />
+      <stop
+         offset="1"
+         stop-color="#eaeaea"
+         stop-opacity=".928"
+         id="stop4"
+         style="stop-color:#c8c8c8;stop-opacity:0.92941177" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#a"
+       id="b"
+       x1="32.122"
+       y1="70.528"
+       x2="32.122"
+       y2="67.613"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     d="M32.123 70.66a1.589 1.589 0 0 1-1.588-1.587 1.59 1.59 0 0 1 1.588-1.588 1.59 1.59 0 0 1 1.587 1.588c0 .875-.712 1.587-1.587 1.587"
+     fill="url(#b)"
+     stroke="#acacac"
+     stroke-width=".265"
+     transform="translate(-30.138 -67.088)"
+     id="path10"
+     style="stroke-width:0.21168;stroke-miterlimit:4;stroke-dasharray:none" />
+  <path
+     d="M 2.8496523,2.5743562 2.5738662,2.8501423 1.1193473,1.3956234 1.3951334,1.1198373 Z"
+     id="path12"
+     inkscape:connector-curvature="0"
+     style="fill:#464646;fill-opacity:1;stroke-width:1" />
+  <path
+     d="M 1.1193473,2.5743562 1.3951334,2.8501423 2.8496523,1.3956234 2.5738662,1.1198373 Z"
+     id="path12-3"
+     inkscape:connector-curvature="0"
+     style="fill:#464646;fill-opacity:1;stroke-width:1" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:#464646;fill-opacity:1;stroke-width:1"
+     d="m 1.988854,2.3795136 a 0.4,0.4 0 1 1 0,-0.8 0.4,0.4 0 0 1 0,0.8"
+     id="path8" />
+</svg>

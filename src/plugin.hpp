@@ -14,6 +14,14 @@ extern Model* modelBM;
 extern Model* modelCMul;
 extern Model* modelSixMix;
 extern Model* modelArp;
+extern Model* modelVolDrumCont;
+extern Model* modelArpSeq;
+extern Model* modelCovGate;
+extern Model* modelSelGate;
+extern Model* modelClockDivCvRot;
+
+
+
 
 
 

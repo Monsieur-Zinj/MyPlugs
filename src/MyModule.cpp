@@ -49,7 +49,7 @@ struct Mymodule : Module {
 		blinkPhase += args.sampleTime;
 		if (blinkPhase >= 1.f)
 		    blinkPhase -= 1.f;
-		lights[BLINK_LIGHT].setBrightness(blinkPhase < 0.5f ? 1.f : 0.f);
+		lights[BLINK_LIGHT].setBrightness(0.5);
     }
 
 };

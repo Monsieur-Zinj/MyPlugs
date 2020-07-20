@@ -11,6 +11,13 @@ void init(Plugin* p) {
 	p->addModel(modelCMul);
 	p->addModel(modelSixMix);
 	p->addModel(modelArp);
+    p->addModel(modelVolDrumCont);
+    p->addModel(modelArpSeq);
+    p->addModel(modelCovGate);
+    p->addModel(modelSelGate);
+    p->addModel(modelClockDivCvRot);
+
+
 
 
 
